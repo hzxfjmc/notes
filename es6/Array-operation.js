@@ -5,15 +5,15 @@ let arr = [1,2,3,4,5,6,7,8];
  * map
  * @return {Object | String}
  */
-// arr.map(item=>{console.log(item)});
+arr.map(item=>{console.log(item)});
 
 /**
  * for of
  * @return {Object | String}
  */
-// for(let item of arr){
-//     console.log(item);
-// }
+for(let item of arr){
+    console.log(item);
+}
 
 /**
  * Filter

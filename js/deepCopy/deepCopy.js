@@ -89,6 +89,13 @@ function deepCopy(initObj,copyObj){
 }
 let str ={}
 deepCopy(obj,str);
-str.hobby.hobby.name = "213";
-console.log(obj);
-console.log(str);
+// str.hobby.hobby.name = "213";
+// console.log(obj);
+// console.log(str);
+
+let demo8 = [{a:213,b:{a:213}},{a:214,b:{a:214}},{a:215,b:{a:215}}];
+let demo9 = [];
+deepCopy(demo8,demo9);
+// console.log(demo8);
+// demo9[0].b.a="azu";
+// console.log(demo9);
