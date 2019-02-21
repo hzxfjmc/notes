@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>请求</title>
+</head>
+<body>
+<button onclick="xmlhttp()">发送请求</button>
+</body>
+<script>
+    function xmlhttp() {
+       var xhr = new XMLHttpRequest();
+        xhr.open("post", "http://localhost:3000/api/register", true);
+        xhr.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+        let content = {
+            name:'azu1',
+            sex:2,
+            password:"123213",
+            avata:"432432432"
+        };
+        xhr.send(JSON.stringify(content));
+        xhr.onreadystatechange = function() {
+            console.log(xhr.responseText);
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                console.log(xhr.responseText);
+            }
+        };
+    }
+</script>
+</html>
