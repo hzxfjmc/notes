@@ -12,6 +12,8 @@
 
 ### Flex布局属性整理
 >[参考文档](https://juejin.im/post/591d74ad128fe1005cfc21cd)
+>[强化训练理解Flex的小游戏] (https://flexboxfroggy.com/)
+>[练习打字游戏] (https://10fastfingers.com/typing-test/english)
 
 #### flex布局
 
