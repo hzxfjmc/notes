@@ -1,0 +1,27 @@
+{
+  "name": "koa-ts",
+  "version": "1.0.0",
+  "description": "kao typescript",
+  "main": "serve.js",
+  "scripts": {
+    "start": "tsc && node dist/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "koa",
+    "typescript"
+  ],
+  "author": "hzx",
+  "license": "ISC",
+  "dependencies": {
+    "koa": "^2.7.0",
+    "koa-router": "^7.4.0"
+  },
+  "devDependencies": {
+    "@types/koa": "^2.0.48",
+    "@types/koa-router": "^7.0.39",
+    "nodemon": "^1.18.10",
+    "ts-node": "^8.0.2",
+    "typescript": "^3.3.3333"
+  }
+}
