@@ -36,3 +36,34 @@ npm i --save-dev @types/koa @types/koa-router
 }
 
 ```
+
+### sequelize-typescript的使用
+
+[文档](https://www.npmjs.com/package/sequelize-typescript)
+
+``` javascript
+
+npm install sequelize --save // v4
+
+npm install mysql2 --save  //安装数据库
+
+npm install reflect-metadata --save
+
+npm install sequelize-typescript --save 
+
+```
+### 在tsconfig.json 里面加入 
+```javascript
+
+"experimentalDecorators": true,
+
+"emitDecoratorMetadata": true
+
+```
+
+###  在package.json 文件中添加"mysql": "tsc && node dist/sequelize-ts/index.js",   执行yarn mysql  在数据库中创建表
+
+
+
+
+

@@ -5,6 +5,7 @@
   "main": "serve.js",
   "scripts": {
     "start": "tsc && node dist/server.js",
+    "mysql": "tsc && node dist/sequelize-ts/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -15,7 +16,11 @@
   "license": "ISC",
   "dependencies": {
     "koa": "^2.7.0",
-    "koa-router": "^7.4.0"
+    "koa-router": "^7.4.0",
+    "mysql2": "^1.6.5",
+    "reflect-metadata": "^0.1.13",
+    "sequelize": "^4.42.0",
+    "sequelize-typescript": "^0.6.8-beta.0"
   },
   "devDependencies": {
     "@types/koa": "^2.0.48",
