@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据收集</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        ul li{
+            width:200px;
+            height:100px;
+            border:1px solid blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <ul>
+            <li data-index=“1”>1</li>
+            <li data-index=“123”>2</li>
+            <li data-index=“1434”>3</li>
+            <li data-index=“1434”>4</li>
+        </ul>
+    </div>
+</body>
+<script>
+    function getClick(){
+        let lis = document.querySelectorAll("li");
+        for(let i in lis){
+            lis[i].onclick = function(){
+                this.innerHTML = "Hello world";
+            }
+        }
+    }
+
+    window.onload = function(){
+        getClick();
+    }
+    
+   window.addEventListener("click",(e)=>{
+       console.log(e.target.dataset.index);
+       if(e.target.dataset.index === undefined) return;
+       //发起请求
+       let xhr = new XMLHttpRequest();
+       xhr.open("post", "http://localhost:3000/api/register", true);
+        xhr.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+        let content = {
+          index:e.target.dataset.index
+        };
+        xhr.send(JSON.stringify(content));
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                console.log(xhr.responseText);
+            }
+        };
+   })
+</script>
+</html>
