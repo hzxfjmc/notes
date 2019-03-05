@@ -10,4 +10,9 @@ Person.prototype.getName = function(){
 }
 
 let person = new Person();
-console.log(person.getName())
+
+//实例化后在原型上添加方法
+person.__proto__.getAge = function(){
+    return this.age;
+}
+console.log(person.getAge());
