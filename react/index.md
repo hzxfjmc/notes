@@ -58,3 +58,8 @@ my-app
 
 ### React组件之间的通信
 >[参考文档](https://react.docschina.org/docs/components-and-props.html)
+
+1.组件名称必须以大写字母开头。
+例如，<div /> 表示一个DOM标签，但 <Welcome /> 表示一个组件，并且在使用该组件时你必须定义或引入它。
+
+2.组件的返回值只能有一个根元素。这也是我们要用一个<div>来包裹所有<Welcome />元素的原因。
