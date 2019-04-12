@@ -1,0 +1,25 @@
+<html>
+	<body><body>
+	<script>
+		function Person(name,age,gender,sex){
+			this.name = name;
+			this.age = age;
+			this.sex = sex;
+		}
+		
+		Person.prototype.getName = function(){
+			return this.name;
+		}
+
+		function Teacher(name,age,gender,sex,subject){
+			Person.call(this,name,age,gender,sex);
+			this.subject = subject;
+		}
+
+		let a = new Teacher("azu",24,100,"男","物理");
+		a.__proto__.getName = function(){
+			return this.name;
+		}
+		console.log(a.getName());
+	</script>
+</html>
