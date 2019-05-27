@@ -1,0 +1,31 @@
+<html>
+<title>继承</title>
+
+<body></body>
+<script>
+    //构造函数
+    function inherit_() {
+        this.name = 'azu';
+    }
+    //增加原型链
+    inherit_.prototype.getName = function () {
+        return this.name;
+    }
+    //构造函数
+    function _inherit() {
+        this.sex = "男";
+    }
+     //继承
+     _inherit.prototype = new inherit_();
+
+    //增加原型链
+    _inherit.prototype.getSex = function () {
+        return this.sex;
+    }
+    
+    let a = new _inherit();
+    console.log(a.getSex());
+    console.log(a instanceof _inherit);
+</script>
+
+</html>
