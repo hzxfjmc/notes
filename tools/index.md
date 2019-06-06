@@ -6,4 +6,12 @@
 
 [redux-devtools文档](https://www.cnblogs.com/zhuzhenwei918/p/7249357.html)
 
-能够很好的记录redux里面的状态的变化，包括记录redux的数据流变化
+1.能够很好的记录redux里面的状态的变化，包括记录redux的数据流变化 
+2.谷歌插件 Redux DevTools
+
+
+#### npm 起服务插件
+[live-server] 
+1.npm install live-server -g
+
+2.在所在文件夹下面live-server
