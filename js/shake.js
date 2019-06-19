@@ -19,11 +19,15 @@ function debounce(func,wait,immediate){
   }
 }
 
-function func(){
-  for(let i = 0;i<100;i++){
-    console.log(i);
-  }
+/**
+ * @description 动态实现一个new
+ * @param {func args}
+ * @retrun Object
+ */
+function new_(func,...args){
+  let obj = {};
+  obj.proto = func.prototype; //
+  // obj.construtor = fn.prototype
+  func.apply(obj,args)
+  return Object.prototype.toString.call(obj) == '[object Object]' ? obj : {};
 }
-
-console.log(Date.now());
-debounce(func,1000,true);
