@@ -1,10 +1,27 @@
 const koa = require('koa');
 const koaBody = require('koa-body');
+// @ts-ignore
 const router = require('koa-router')();
 const fs = require('fs');
 const static = require('koa-static');
 const path = require('path');
+const winston = require('winston');
 const app = new koa();
+
+const logger = winston.createLogger({
+  level: 'info',
+  format: winston.format.json(),
+  defaultMeta: { service: 'user-service' },
+  transports: [
+    //
+    // - Write to all logs with level `info` and below to `combined.log` 
+    // - Write all logs error (and below) to `error.log`.
+    //
+    new winston.transports.File({ filename: 'error.log', level: 'error' }),
+    new winston.transports.File({ filename: 'combined.log' })
+  ]
+});
+ 
 
 app.use(koaBody({
   multipart:true,
@@ -20,6 +37,7 @@ router.get('/',(ctx) =>{
   ctx.type = 'html';
   const pathUrl = path.join(__dirname,'/static/upload.html');
   ctx.body = fs.createReadStream(pathUrl);
+  winston.info('info', '登录成功');
 })
 
 router.post('/upload',(ctx)=>{
@@ -40,6 +58,7 @@ router.post('/upload',(ctx)=>{
  if(!fs.existsSync(filepath)){
    fs.mkdir(filepath,(err)=>{
      if(err){
+       // @ts-ignore
        throw new Error(err);
      }else{
        fileReader.pipe(writeStream);
@@ -61,6 +80,11 @@ router.post('/upload',(ctx)=>{
 });
 app.use(router.routes());
 app.use(router.allowedMethods());
+// @ts-ignore
 app.listen(3001, () => {
-  console.log('server is listen in 3001');
+  winston.info(
+    `[info]Application is OK\n` +
+    `[info]time: ${new Date()}\n` +
+    `[info]port: ${3001}\n`);
+  console.log("启动服务");
 });
