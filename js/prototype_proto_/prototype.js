@@ -15,4 +15,12 @@ let person = new Person();
 person.__proto__.getAge = function(){
     return this.age;
 }
+
+// 实例化的对象的__proto__和构造函数的prototype是一样的
+person.__proto__ === Person.prototype;
+
+// 实例化的对象的constructor和构造函数的prototype是一样的
+person.constructor === Person.prototype
+
+
 console.log(person.getAge());
