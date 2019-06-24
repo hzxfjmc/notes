@@ -99,13 +99,14 @@ function deepCopy1(soure){
     let target = Array.isArray(soure) ? [] : {};
     for(let i in soure){
         if(Object.prototype.hasOwnProperty.call(soure,i)){  // Object.prototype.hasOwnProperty.call(soure,i) 等价于 soure.hasOwnProperty(i)l
-            if(typeof soure === 'object'){
+            if(typeof soure[i] === 'object'){
                 target[i] = deepCopy1(soure[i])
             }else{
                 target[i] = soure[i];
             }
         }
     }
+    return target;
 }
 let demo8 = [{a:213,b:{a:213}},{a:214,b:{a:214}},{a:215,b:{a:215}}];
 let demo9 = [];
