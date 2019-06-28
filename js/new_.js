@@ -35,3 +35,22 @@ function instance_(l,r){
     r1 = r1.__proto__;
   }
 }
+
+//贪心算法
+function greedyAlg(souce){
+  let target = souce;
+  this.getResult = function(result){
+    let res = [];
+    let total = 0;
+    for(let i = souce.length;i>=0;i--){
+      let coin = target[i];
+      while(total+coin <= result){
+        res.push(coin);
+        total += coin;
+      }
+    }
+    return res;
+  }
+}
+
+var mcoinChange = new greedyAlg([1,5,10,25]);
