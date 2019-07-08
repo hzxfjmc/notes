@@ -10,6 +10,8 @@ function new_(){
 }
 
 //深拷贝
+
+
 function deepClone(souce){
   if(!souce) return souce;
   let obj = Array.isArray(souce) ? [] : {};
@@ -26,7 +28,7 @@ function deepClone(souce){
 }
 
 //js 动态生成一个instanceof
-function instance_(l,r){
+function instance_(l1,r1){
   let l1 = l1.prototype;
   let r1 = r1.__proto__;
   while(true){

@@ -1,3 +1,4 @@
+// @ts-nocheck
 function Person(){
     this.name = "azu";
     this.age = "18";
@@ -12,6 +13,7 @@ Person.prototype.getName = function(){
 let person = new Person();
 
 //实例化后在原型上添加方法
+// @ts-ignore
 person.__proto__.getAge = function(){
     return this.age;
 }

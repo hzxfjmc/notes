@@ -18,7 +18,7 @@ shareList.listen(function (color, size) {
   console.log("颜色是：" + color);
   console.log("尺码是：" + size);
 });
-
+  
 // 小花订阅如下消息
 shareList.listen(function (color, size) {
   console.log("再次打印颜色是：" + color);
