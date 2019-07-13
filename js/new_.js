@@ -28,13 +28,13 @@ function deepClone(souce){
 }
 
 //js 动态生成一个instanceof
-function instance_(l1,r1){
-  let l1 = l1.prototype;
-  let r1 = r1.__proto__;
+function instance_(l,r){
+  let l1 = l.prototype;
+  let r1 = r.__proto__;
   while(true){
     if(l1 === null) return false;
     if(l1 === r1) return true;
-    r1 = r1.__proto__;
+    r1 = r.__proto__;
   }
 }
 
