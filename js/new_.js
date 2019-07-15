@@ -35,11 +35,11 @@ function deepClone(souce){
 //js 动态生成一个instanceof
 function instance_(l,r){
   let l1 = l.prototype;
-  r1 = r.__proto__;
+  let r1 = r.__proto__;
   while(true){
     if(l1 === null) return false;
     if(l1 === r1) return true;
-    r1 = r1.__proto__;
+    r1 = r.__proto__;
   }
 }
 
