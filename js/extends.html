@@ -1,32 +1,46 @@
 <html>
 	<body><body>
 	<script>
-		function Person(name,age,gender,sex){
-			this.name = name;
-			this.age = age;
-			this.sex = sex;
-		}
+	// 	function Person(name,age,gender,sex){
+	// 		this.name = name;
+	// 		this.age = age;
+	// 		this.sex = sex;
+	// 	}
 		
-		Person.prototype.getName = function(){
-			return this.name;
-		}
+	// 	Person.prototype.getName = function(){
+	// 		return this.name;
+	// 	}
 
-		function Teacher(name,age,gender,sex,subject){
-			Person.call(this,name,age,gender,sex);
-			this.subject = subject;
-		}
+	// 	function Teacher(name,age,gender,sex,subject){
+	// 		Person.call(this,name,age,gender,sex);
+	// 		this.subject = subject;
+	// 	}
 
-		let a = new Teacher("azu",24,100,"男","物理");
-		a.__proto__.getName = function(){
-			return this.name;
-		}
+	// 	let a = new Teacher("azu",24,100,"男","物理");
+	// 	a.__proto__.getName = function(){
+	// 		return this.name;
+	// 	}
 
-		let d = function(){
-			let a1 = {a:1};
-			let b1 = {c:2};
-			console.log(arguments.callee(a1,b1));
-		}
-		d();
-		// console.log(a.getName());
+	// 	let d = function(){
+	// 		let a1 = {a:1};
+	// 		let b1 = {c:2};
+	// 		console.log(arguments.callee(a1,b1));
+	// 	}
+	// 	d();
+	// 	// console.log(a.getName());
+
+	function person(name,age){
+		this.name = name;
+		this.age = age;
+	}
+	person.prototype.lastName = "zu";
+
+	function son(sex){
+		this.sex = sex;
+	}
+	son.prototype =new person('azu',24);
+
+	let son1 = new son("男");
+	console.log(son1.sex)
 	</script>
 </html>

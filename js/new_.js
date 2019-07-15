@@ -2,13 +2,18 @@
 //js实现一个new关键字
 function new_(){
   let obj = new Object();
-  let fn = [].shift.call(arguments);
+  let fn = [].shift.call(arguments); //第一个参数函数
   // @ts-ignore
   obj.__proto__ = fn.prototype;
   let result = fn.apply(obj,arguments);
   return typeof result === 'object' ? result : obj;
 }
 
+function person(name,age){
+  this.name = name;
+  this.age = age;
+}
+//new_(person,'azu',23);
 //深拷贝
 
 
@@ -28,9 +33,9 @@ function deepClone(souce){
 }
 
 //js 动态生成一个instanceof
-function instance_(l1,r1){
-  let l1 = l1.prototype;
-  let r1 = r1.__proto__;
+function instance_(l,r){
+  let l1 = l.prototype;
+  r1 = r.__proto__;
   while(true){
     if(l1 === null) return false;
     if(l1 === r1) return true;
