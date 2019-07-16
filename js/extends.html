@@ -29,6 +29,11 @@
 	// 	d();
 	// 	// console.log(a.getName());
 
+
+	/*
+	* 原型继承存在的缺点在实例化时会实例出多个属性，可能存在不需要的属性，
+	* 每次继承都必须要实例化
+	*/
 	function person(name,age){
 		this.name = name;
 		this.age = age;

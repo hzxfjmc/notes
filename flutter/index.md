@@ -10,6 +10,7 @@
 
 2.flutter常用插件
 ```javascript
+
  audio_recorder: any #录音、播放
   flutter_sound: ^1.1.5#录音
   dropdown_menu: ^1.1.0#下拉菜单
