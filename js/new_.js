@@ -61,3 +61,58 @@ function greedyAlg(souce){
 }
 
 var mcoinChange = new greedyAlg([1,5,10,25]);
+
+
+
+//防抖
+function debounce(func,delay){
+  let timer = null; 
+  return function(){
+     let context = this;
+     let args = arguments;
+     clearTimeout(timer);
+     timer = setTimeout(() => {
+      func.apply(context,args)
+    }, delay);
+    }
+}
+//节流
+function throttle(){
+  let previous = 0;
+  return function(){
+    let now = Date.now();
+    let context = this;
+    let args = arguments;
+    if(now - previous-wait){
+      func.apply(context,this);
+      previous = now;
+    }
+  }
+}
+
+
+//100块钱分给10个人最多不能低于6块，最高不能高于12块
+function cash(){
+  let random = Math.random()*6+6;
+  let totle = 100;
+  let totle1 = 0;
+  let arr = [];
+    for(let i =0;i<9;i++ ){
+      totle -=random;
+      arr.push(random)
+    }
+    totle1 = arr.reduce((prev,next)=>{
+      return prev+next;
+    })
+    
+    if(totle1 >94 || totle1 < 88) return cash();
+    
+    arr.push(100 - totle1)
+    arr.filter(item=>{
+      if(item>12||item<6){
+      console.log(item);
+        return cash()
+      }
+    })
+    return arr;
+  }
