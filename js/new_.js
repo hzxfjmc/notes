@@ -93,26 +93,27 @@ function throttle(){
 
 //100块钱分给10个人最多不能低于6块，最高不能高于12块
 function cash(){
-  let random = Math.random()*6+6;
-  let totle = 100;
-  let totle1 = 0;
-  let arr = [];
-    for(let i =0;i<9;i++ ){
-      totle -=random;
-      arr.push(random)
+  var totle = 100;
+  var totle1 = 0;
+  var arr = [];
+    for(var i =0;i<9;i++ ){
+      totle -=Number((Math.random()*6).toFixed(2))+6;
+      arr.push(Number((Math.random()*6).toFixed(2))+6);
     }
     totle1 = arr.reduce((prev,next)=>{
       return prev+next;
     })
-    
     if(totle1 >94 || totle1 < 88) return cash();
-    
     arr.push(100 - totle1)
     arr.filter(item=>{
       if(item>12||item<6){
-      console.log(item);
         return cash()
       }
     })
+	let a = arr.reduce((prev,next)=>{
+		return prev+next;
+	})
+	console.log(a)
     return arr;
   }
+cash()
