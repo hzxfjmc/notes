@@ -14,9 +14,19 @@ function person(name,age){
   this.age = age;
 }
 //new_(person,'azu',23);
+
+//感觉这种更好理解
+function _new(func){
+  return function(){
+    let obj = {
+      __proto__:func.prototype
+    }
+    func.call(obj,...arguments);
+    return obj;
+  }
+}
+_new(person)('azu',23)
 //深拷贝
-
-
 function deepClone(souce){
   if(!souce) return souce;
   let obj = Array.isArray(souce) ? [] : {};
@@ -76,16 +86,17 @@ function debounce(func,delay){
     }, delay);
     }
 }
+
 //节流
-function throttle(){
-  let previous = 0;
+function throttle(func,wait){
+  let previous = Date.now();
   return function(){
     let now = Date.now();
     let context = this;
     let args = arguments;
-    if(now - previous-wait){
-      func.apply(context,this);
-      previous = now;
+    if(now - previous >= wait){
+      func.apply(context,args);
+      previous = Date.now();
     }
   }
 }
@@ -106,3 +117,51 @@ function cash(total,num) {
   return luckboy;
 }
 cash(100,12)
+
+
+//js实现一个call函数
+Function.prototype.mycall = function(context){
+  if(typeof this != 'function'){
+    throw new TypeError('error')
+  }
+  context = context || window;
+  context.fn = this;
+  let args = [...arguments].slice(1);
+  let result = context.fn(...args);
+  delete context.fn;
+  return result;
+}
+
+//js实现一个apply方式
+Function.prototype.myapply = function(context){
+  if(typeof this != 'function'){
+    throw new TypeError('error')
+  }
+  context = context || window;
+  context.fn = this;
+  let result;
+  if(arguments[1]){
+    result = context.fn(...arguments[1])
+  }else{
+    result = context.fn();
+  }
+  delete context.fn;
+  return result;
+}
+
+
+//js实现一个bind方法
+Function.prototype.mybind = function(context){
+  if(typeof this != 'function'){
+    throw new TypeError('error')
+  }
+  let this_ = this;
+  let args = [...arguments].slice(1);
+  return function Func(){
+    if(this instanceof Func){
+      return this_(...args,...arguments);
+    }else{
+      return this_.apply(context,args.concat(...arguments));
+    }
+  }
+}
