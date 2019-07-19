@@ -165,3 +165,12 @@ Function.prototype.mybind = function(context){
     }
   }
 }
+
+
+//rem转换
+function setRem(){
+  let width = document.documentElement.getClientRects().width;
+  let rem = width/75;  //设计稿按750的设计稿来定
+  document.documentElement = rem + 'px';
+}
+addEventListener('resize',setRem)
