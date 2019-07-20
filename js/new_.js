@@ -105,4 +105,47 @@ function cash(total,num) {
   }
   return luckboy;
 }
+console.time('start');
 cash(100,12)
+console.timeEnd('start')
+
+
+function cash(){
+  var totle1 = 0;
+  var arr = [];
+    for(var i =0;i<9;i++ ){
+      arr.push(Number((Math.random()*6).toFixed(2))+6);
+    }
+    totle1 = arr.reduce((prev,next)=>{
+      return prev+next;
+    })
+    if(totle1 >94 || totle1 < 88) return cash();
+    arr.push(100 - totle1)
+    return arr;
+  }
+
+cash()
+
+
+//分类
+function computedCount(){
+  let arr2 = [];
+  let arr = ["煤","米","水","煤","米"];
+  arr.sort();
+  for(let i = 0;i<arr.length;){
+    let count = 0;
+   for(let j=i;j<arr.length;j++){
+     if(arr[i] == arr[j]){
+       count++;
+     }
+   } 
+   arr2.push({
+     name:arr[i],
+     count :count
+   })
+   i += count;
+  }
+  console.log(arr2);
+  return arr2;
+}
+computedCount();
