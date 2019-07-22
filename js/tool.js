@@ -103,7 +103,6 @@ function throttle(func,wait){
 
 
 //100块钱分给10个人最多不能低于6块，最高不能高于12块
-
 function cash(total,num) {
   var luckboy = [];
   while(num > 0){
@@ -217,4 +216,41 @@ function setRem(){
   let rem = width/75;  //设计稿按750的设计稿来定
   document.documentElement = rem + 'px';
 }
-addEventListener('resize',setRem)
+// addEventListener('resize',setRem)
+
+
+//冒泡算法
+function bubble(){
+  let arr = [1,2,4,432,43,2,2,423,543];
+  for(let i=0;i<arr.length-1;i++){
+    for(let j = 0;j<arr.length-i-1;j++){
+      if(arr[j]>arr[j+1]){
+        let temp = arr[j];
+        arr[j] = arr[j+1];
+        arr[j+1] = temp;
+      }
+    }
+  }
+  return arr;
+}
+bubble()
+
+
+// '1,2,3,5,7,8,10'
+const nums1 = [1, 2, 3,5, 7, 8, 10];
+function simplifyStr(num) {
+  var result = [];
+  var temp = num[0]
+  num.forEach((value, index) => {
+    if (value + 1 !== num[index + 1]) {
+      if (temp !== value) {
+        result.push(`${temp}~${value}`)
+      } else {
+        result.push(`${value}`)
+      }
+      temp = num[index + 1]
+    }
+  })
+  return result;
+}
+console.log(simplifyStr(nums1).join(','))
