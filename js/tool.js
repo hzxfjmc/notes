@@ -254,3 +254,31 @@ function simplifyStr(num) {
   return result;
 }
 console.log(simplifyStr(nums1).join(','))
+
+
+//对象扁平化
+let entry = {
+  a: {
+      b: {
+          c: {
+              dd: 'ab43cdd'
+          }
+      },
+      d:{xx:'adxx'},
+      e:'ae'
+  }
+}
+function floatsort(entry,key="",obj={}) {
+  for (let i in entry) {
+      if(Object.prototype.hasOwnProperty.call(entry,i)){
+          let keyName = `${key}${i}`;
+          if(typeof entry[i] == 'object'){
+              floatsort(entry[i],keyName+'.',obj);
+          }else{
+              obj[keyName] = entry[i] 
+          }
+      }
+  }
+  return obj
+}
+floatsort(entry,key="",obj={});
