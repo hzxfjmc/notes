@@ -30,7 +30,7 @@ newPromise.prototype = {
     },
     catch:function(fn_){
         if(that.rejectParams && that.status == 'pending'){
-            fn(that.rejectParams);
+            fn_(that.rejectParams);
             that.rejectParams = '';
             that.status = 'reject';
         }
@@ -42,17 +42,17 @@ newPromise.prototype = {
 function testNewPromise(status){
     return new newPromise((resolve,reject)=>{
         if(status == 200){
-            console.log(123);
+            console.log(2);
             resolve('成功')
             setTimeout(()=>{
-                console.log(1);
+                console.log(3);
             },1000)
         }else{
             reject('失败')
         }
     }).then(()=>{
-        console.log(300);
+        console.log(4);
     })
 }
-
-testNewPromise(300)
+console.log(1)
+testNewPromise(200)
