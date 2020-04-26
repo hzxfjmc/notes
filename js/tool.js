@@ -26,6 +26,7 @@ function _new(func){
   }
 }
 _new(person)('azu',23)
+
 //深拷贝
 function deepClone(souce){
   if(!souce) return souce;
@@ -282,3 +283,15 @@ function floatsort(entry,key="",obj={}) {
   return obj
 }
 floatsort(entry,key="",obj={});
+
+
+//数组去重
+function filterArr(arr){
+    for(let i=0;i<arr.length;i++){
+        if(arr[i] === arr[i+1]){
+            arr.splice(i,1)
+            i--
+        }
+    }
+    return arr
+}
