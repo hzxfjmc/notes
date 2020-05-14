@@ -30,6 +30,53 @@ function sortBinaty_tree(arr){
 
 
 /**
+ *  二叉树的前序遍历
+*   输入: [1,null,2,3]  
+    1
+        \
+        2
+        /
+    3 
+    输出: [1,2,3]
+ */
+//递归版本
+var perOrderTravase = function(root){
+    let list = [];
+    const preOrder = function(node){
+        if(node !== null){
+            //先访问根节点
+            list.push(node.val)
+            //再访问左节点
+            preOrder(node.left)
+            //最后访问右节点
+            preOrder(node.right)
+        }
+    }
+    preOrder(root)
+    return list
+}
+
+//非递归版本
+const perOrderTravaseUnRecur = function(root){
+    let list = [];
+    let stack = [root];
+    while(stack.length !== 0){
+        const curNode = stack.pop();
+        const left =  curNode.left;
+        const right = curNode.right;
+        //第一步的时候，先访问的是根节点
+        list.push(curNode.val)
+        if(right){
+            stack.push(right)
+        }
+        //因为pop是取出最后一个元素，所以我们要确保首先拿到的是左节点
+        if(left){
+            stack.push(left)
+        }
+    }
+    return list
+}
+/**
  * 二叉树中序遍历
  * 输入: [1,null,2,3]
    1
