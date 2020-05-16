@@ -76,6 +76,10 @@ const perOrderTravaseUnRecur = function(root){
     }
     return list
 }
+
+
+
+
 /**
  * 二叉树中序遍历
  * 输入: [1,null,2,3]
@@ -118,4 +122,53 @@ var inOrderTraverse = function(root){
         node = node.right
     }
     return list
+}
+
+
+/**
+ * 给定一个二叉树，返回它的 后序 遍历。
+ * 输入: [1,null,2,3]  
+   1
+    \
+     2
+    /
+   3 
+   输出: [3,2,1]
+ */
+
+ //递归版本
+ var postOrderTravers = function(root){
+     let list = [];
+     const postOrder = (node)=>{
+         if(!node){
+            postOrder(node.left)
+            postOrder(node.right)
+            list.push(node.val)
+         }
+     }
+     return list;
+ }
+//迭代版本
+const postOrderTraverseUnRecur = (root)=>{
+    let list = []
+    if(root !== undefined){
+        let s1 = [];
+        let s2 = []
+        s1.push(root)
+        while(s1.length !==0){
+            head = s1.pop()
+            s2.push(head)
+            if(head.left !== undefined){
+                s1.push(head.left)
+            }
+            if(head.right !== undefined){
+                s1.push(head.right)
+            }
+        }
+        while(s2.length !==0){
+            var item = s2.pop();
+            list.push(item.val)
+        }
+    }
+    return list;
 }
