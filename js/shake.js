@@ -1,6 +1,5 @@
 function debounce(func,wait,immediate){
   let timeout;
-  console.log(arguments);
   return function(){
     let context = this;
     let args = arguments;
@@ -24,10 +23,18 @@ function debounce(func,wait,immediate){
  * @param {func args}
  * @retrun Object
  */
-function new_(func,...args){
+function new_(){
   let obj = {};
-  obj.proto = func.prototype; //
-  // obj.construtor = fn.prototype
-  func.apply(obj,args)
-  return Object.prototype.toString.call(obj) == '[object Object]' ? obj : {};
+  let Construtor = Array.prototype.shift.call(arguments)
+  obj.__proto__ = Construtor.prototype;
+  Construtor.apply(obj,arguments)
+  return obj
 }
+
+function test(name,age){
+    this.name = name;
+    this.age = age;
+}
+
+let obj = new_(test,'a',21)
+console.log(obj)
