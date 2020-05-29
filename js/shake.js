@@ -38,3 +38,5 @@ function test(name,age){
 
 let obj = new_(test,'a',21)
 console.log(obj)
+
+
