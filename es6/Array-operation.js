@@ -78,3 +78,8 @@ let demo6 = arr.findIndex(val => val>3);
  * @return {Boolean}
  */
 let demo8 = arr.includes(10);
+
+
+/**
+ * es6 数组操作不该原数组
+ */
