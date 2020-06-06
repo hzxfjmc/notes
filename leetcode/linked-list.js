@@ -1,3 +1,18 @@
+//链表反转
+function reverseList(list){
+    let head = list.head;
+    let current = head;
+    let next = null;
+    let pre = null
+    if(head === null || head.next === null) return list
+    while(current != null){
+       next = current.next;
+       current.next = pre;
+       pre = current;
+       current = next
+    }
+    list.head = pre;
+}
 
 //判断链表是否有闭环
 function hadCyle(head){
