@@ -71,3 +71,25 @@ function new_(){
 }
 
 
+
+
+
+
+function new_(){
+    let obj = new Object()
+    let func =  [].shift.call(arguments)
+    obj.__proto__ = func.prototype
+    let result = func.apply(obj,arguments)
+    return typeof result === 'object' ? result : obj
+} 
+
+
+Function.prototype.mycall1 = function(context){
+
+    context = context || window
+    context.fn = this;
+    let args = [...arguments].slice(1)
+    let result = context.fn(...args)
+    delete context.fn
+    return result
+}
