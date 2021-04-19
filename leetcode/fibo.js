@@ -5,24 +5,35 @@
 
 // 正常递归实现
 function fibo(n){
-    if(n.length <1 ) return -1
-    if(n.length <= 2) return 1
+    if(n <1 ) return -1
+    if(n <= 2) return 1
     return fibo(n-2)+fibo(n-1)
 }
 
 // for循环实现
 function fibo_for(n){
-    if(n.length <1 ) return -1
-    if(n.length <= 2) return 1
+    if(n <1 ) return -1
+    if(n <= 2) return 1
     let pre = 1;
     let next = 2;
     let total = 0;
-    for(let i = 3;i<n.length;i++){
-        total = pre_next;
+    for(let i = 3;i<n;i++){
+        total = pre+next;
         pre = next;
         next = total
     }
     return total
+}
+
+// 动态规划
+function fibo_2(n){
+    let list = []
+    list[0] = 1;
+    list[1] = 1;
+    for(let i = 2;i<=n;i++){
+        list[i] = list[i-1]+list[i-2]
+    }
+    return list[n];
 }
 
 
