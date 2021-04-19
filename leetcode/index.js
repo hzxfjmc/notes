@@ -1,5 +1,4 @@
 //两数之和
-
 function addString(){
     let a = '1000'
     let b = '111'
@@ -63,3 +62,26 @@ addString()
       return -1
     }
   };
+
+
+  /**
+   * 如何判断左右小括号是否全部匹配。如 ()[]{}
+   */
+  const isValid = function(s){
+      let stack = [];
+      let map = {
+          "(":')',
+          "{":'}',
+          "[":']'
+      }
+      for(let char of s){
+          if(char in map){
+              stack.push(char)
+          }else{
+              if(!stack.length || char != map[stack.pop()]){
+                  return false
+              }
+          }
+      }
+      return !stack.length
+  }
