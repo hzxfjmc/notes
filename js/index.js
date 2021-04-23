@@ -85,7 +85,6 @@ function new_(){
 
 
 Function.prototype.mycall1 = function(context){
-
     context = context || window
     context.fn = this;
     let args = [...arguments].slice(1)
