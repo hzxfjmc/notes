@@ -12,3 +12,45 @@
 
 
 ## apply
+通过apply方法，能够编写用于不同对象的方法
+因为apply可以改变this的指向从而改变函数里的变量
+
+``` javascript
+
+    let person = {
+        fullName:function(){
+            return `my name is ${this.name} + age: ${this.age}`
+        },
+    }
+
+    let userInfo = {
+        name:'azu',
+        age:26
+    }
+
+    person.fullName.apply(userInfo)
+
+```
+
+apply其实本义上来说与call方法是一样的，其差别就是传入的参数不一样。
+
+### apply的实现
+首先我们要知道apply的工作原理是什么
+apply是通过在Function原型上添加一个方法来绑定this指向
+apply的参数是通过函数传参如果没有参数默认指向window
+
+``` javascript 
+
+    Function.prototype.myApply = function(context){
+        if(typeof this != 'Function') return new TypeError('类型错误')
+        let context = context || window;
+        context.fn = this
+        if(arguments[1]){
+            context.fn(...arguments[1])
+        }else{
+            context.fn()
+        }
+        delete context.fn 
+    }
+
+```
