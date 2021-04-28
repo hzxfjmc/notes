@@ -94,3 +94,72 @@ call的原理和aply的工作原理是差不多的
     }
 
 ```
+
+
+## bind
+原理:bind方法创建一个新的函数，在bind调用时，这个新函数的this被指定为bind方法的第一个参数，而其余参数将作为新函数的参数，供调用时使用。
+bind的返回值和apply、call不一样，bind返回一个愿函数的拷贝，并拥有指定的this值和初始参数
+使用如下：
+
+``` javascript
+
+    var a = {
+        b:function(){
+            var this_ = this;
+            var func = function(){
+                console.log(this_.c)
+            }
+            func()
+        },
+        c:'hello'
+    }
+    a.b() // undefined 这里的this指向的是全局window对象
+    console.log(a.c) // hello
+
+
+    // el1
+    var a = {
+        b:function(){
+            var func = function(){
+                console.log(this.c)
+            }.bind(this)
+            func()
+        },
+        c:'hell0'
+    }
+    a.b() // hello 
+    console.log(a.c) // hello
+
+     // el2
+    var a = {
+        b:function(){
+            var func = function(){
+                console.log(this.c)
+            }
+            func.bind(this)()
+        },
+        c:'hell0'
+    }
+    a.b() // hello 
+    console.log(a.c) // hello
+
+```
+
+### bind的实现
+
+``` javascript
+
+    Function.prototype.mybind(context){
+        if(typeof this != 'Function') return new TypeError('type error')
+        let this_ = this
+        let args = [...arguments].slice(1)
+        return function func(){
+            if(this instanceof func){
+                return this_(...args,...arguments)
+            }else{
+                this_.apply(context,args.concat(...arguments))
+            }
+        }
+    }
+
+```
