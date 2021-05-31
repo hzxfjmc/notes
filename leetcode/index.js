@@ -242,3 +242,31 @@ function cash(total,num) {
       }
       return arr
   }
+
+
+
+  /**
+   * 括号匹配
+   * @params String '()[]{()}'
+   * @return true
+   */
+let str = '()[]{(})}';
+function matchStr(str){
+    let stack = [];
+    let map = {
+        "(":')',
+        "{":'}',
+        "[":']'
+    }
+    for(let char of str){
+        if(map.hasOwnProperty(char)){
+            stack.push(char)
+        }else{
+            if(!stack.length || char != map[stack.pop()]){
+                return false
+            }
+        }
+    }
+    return !stack.length
+} 
+console.log(matchStr(str))
