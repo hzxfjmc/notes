@@ -203,11 +203,11 @@
 
 2.编辑文档
 
-    alias ga = 'git add'
+    alias ga='git add'
 
-    alias gaa = 'git add --all'
+    alias gaa='git add --all'
 
-    alias gp = 'git push'
+    alias gp='git push'
 
 3.保存并source ~/.bashrc即可
 
