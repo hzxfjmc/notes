@@ -41,7 +41,7 @@
     }
 
     let instance = new SubType()
-    console.log(instance.getSubValue)
+    console.log(instance.getSubValue())
 
 ``` 
 例子中的实例及构造函数和原型之间的关系图：
