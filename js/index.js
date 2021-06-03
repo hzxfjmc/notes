@@ -70,11 +70,6 @@ function new_(){
     return typeof result === 'object' ? result : obj 
 }
 
-
-
-
-
-
 function new_(){
     let obj = new Object()
     let func =  [].shift.call(arguments)

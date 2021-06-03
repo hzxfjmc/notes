@@ -1,3 +1,6 @@
+/**
+ * 最长回文字符
+ */
 var lengthOfLongestSubstring = function (s) {
     let i = 0, res = 0, n = 0;
     for (let j = 0; j < s.length; j++) {
@@ -8,11 +11,14 @@ var lengthOfLongestSubstring = function (s) {
             i += n + 1;
         }
     }
+    console.log(res)
     return res;
 };
 lengthOfLongestSubstring("abcabcbb");
 
-
+/**
+ * 排序将对象排序整理成.的模式
+ */
 let entry = {
     a: {
         b: {
