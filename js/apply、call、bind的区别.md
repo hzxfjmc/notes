@@ -52,6 +52,7 @@ apply的参数是通过函数传参如果没有参数默认指向window
            result = context.fn()
         }
         delete context.fn 
+        return result
     }
 
 ```
