@@ -169,9 +169,9 @@ function cash(total,num) {
   
   //冒泡算法
   function bubble(){
-    let arr = [1,2,4,432,43,2,2,423,543];
+    let arr = [1,2,4,432,43,2,5,2,423,543];
     for(let i=0;i<arr.length-1;i++){
-      for(let j = 0;j<arr.length-i-1;j++){
+      for(let j = 0;j<arr.length-1;j++){
         if(arr[j]>arr[j+1]){
           let temp = arr[j];
           arr[j] = arr[j+1];
@@ -179,6 +179,7 @@ function cash(total,num) {
         }
       }
     }
+    console.log(arr)
     return arr;
   }
   bubble()
