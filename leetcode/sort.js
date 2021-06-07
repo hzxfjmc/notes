@@ -43,3 +43,26 @@ function fastSort(arr,from,to){
 }
 fastSort(arr,0,arr.length-1)
 console.log(arr)
+
+
+
+let arr1 = [1,2,23,2,4,54,435,6,1]
+// 快速排序
+function quickSort(arr){
+    if(arr.length === 0) return arr
+    let currentIndex = Math.floor(arr.length/2)
+    let currentVal = arr.splice(currentIndex, 1)[0]
+    let left = [];
+    let right = [];
+    for(let i = 0;i<arr.length;i++){
+        if(arr[i]<currentVal){
+            left.push(arr[i])
+        }else{
+            right.push(arr[i])
+        }
+    }
+
+    return quickSort(left).concat([currentVal],quickSort(right))
+}
+
+console.log( quickSort(arr1))
