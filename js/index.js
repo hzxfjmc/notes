@@ -87,3 +87,32 @@ Function.prototype.mycall1 = function(context){
     delete context.fn
     return result
 }
+
+
+// 节流
+function throttle(func,wait){
+    let timeout;
+    return function(){
+        let context = this;
+        let args = arguments;
+        if(!timeout){
+            timeout = setTimeout(function(){
+                timeout = null;
+                func.apply(context,args)
+            }, wait);
+        }
+    }
+}
+
+// 防抖
+function debound(func,wait){
+    let timeout = null;
+    let context = null;
+    let args = arguments;
+    return function(){
+        if(timeout) clearTimeout(timeout)
+        timeout = setTimeout(function(){
+           func.apply(context,args) 
+        }, wait);
+    }
+}
