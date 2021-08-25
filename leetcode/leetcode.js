@@ -34,3 +34,33 @@ function checkPhone(str){
 }
 
 checkPhone(str)
+
+
+/**
+ * 两个最大数相加
+ */
+
+ let a = "432432423423";
+ let b = "1243243242343243234";
+ 
+ function add(a ,b){
+    let maxLength = Math.max(a.length,b.length)
+    a = a.padStart(maxLength,0)
+    b = b.padStart(maxLength,0)
+    let t = 0; // 累加数
+    let f = 0; // 递增数
+    let sum = ''
+    for(let i = a.length-1;i>=0;i--){
+        t = parseInt(a[i])+parseInt(b[i]) + f
+        f = Math.floor(t/10)  // 向下取整  恒等于1
+        sum = t%10 + sum   //取10的余数
+    }
+    // 最后一个数如果f等于1 那就得累加
+    if(f === 1){
+        sum = '1'+sum
+    }
+    return sum
+ }
+
+ add(a ,b)
+ 
