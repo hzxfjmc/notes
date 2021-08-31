@@ -36,9 +36,9 @@
 
     SubType.prototype = new SuperType()
 
-    SubType.prototype.getSubValue = function(){
-        return this.property
-    }
+    // SubType.prototype.getSubValue = function(){
+    //     return this.property
+    // }
 
     let instance = new SubType()
     console.log(instance.getSubValue())
