@@ -221,6 +221,10 @@ Electron没有内置的方法来保留用户首选项和其他数据。electron-
 
 
 
+### eletron打包
+
+eletron打包在window下可以增加下面的配置在打包过程中添加一些确认协议，还可以改变app的安装UI界面
+
 nsis:
   oneClick: false
   perMachine: false
